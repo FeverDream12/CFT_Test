@@ -7,11 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.example.cft_test.R
 import com.example.cft_test.databinding.FragmentSignInBinding
 import com.example.cft_test.MAIN
 import com.example.cft_test.USERNAME
+import com.example.cft_test.USERNAMEFILE
+import java.io.File
+import java.io.FileInputStream
 
 class SignInFragment : Fragment() {
 
@@ -30,10 +34,14 @@ class SignInFragment : Fragment() {
 
         inputCheck()
 
+
         binding.signUpButton.setOnClickListener{
 
             if(passwordCheck() && nameCheck()){
                 USERNAME = binding.firstNameEditTextLayout.text.toString() + " " + binding.secondNameEditTextLayout.text.toString()
+                USERNAMEFILE.delete()
+                USERNAMEFILE.appendText(USERNAME)
+
                 MAIN.navController.navigate(R.id.action_signInFragment_to_homeFragment)
             }
 

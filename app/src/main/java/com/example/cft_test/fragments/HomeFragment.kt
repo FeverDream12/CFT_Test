@@ -10,8 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import com.example.cft_test.MAIN
 import com.example.cft_test.R
 import com.example.cft_test.USERNAME
+import com.example.cft_test.USERNAMEFILE
 import com.example.cft_test.databinding.FragmentHomeBinding
 
 
@@ -46,6 +48,11 @@ class HomeFragment : Fragment() {
             dialogOkButton.setOnClickListener{
                 dialog.dismiss()
             }
+        }
+
+        binding.backButton.setOnClickListener {
+            MAIN.navController.navigate(R.id.action_homeFragment_to_signInFragment)
+            USERNAMEFILE.delete()
         }
     }
 }
